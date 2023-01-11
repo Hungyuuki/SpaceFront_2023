@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <link rel="stylesheet" href="../scss/confirmModal.css">
+    <link rel="stylesheet" href="../scss/styles.css">
+</head>
+
+<body>
+    <div class="block-modal">
+        <p id="message" style="color: rgb(240, 67, 67);"  class="draggable">
+            ルーム名が既に存在しています。
+        </p>
+        <div class="button-group-confirm error-modal">
+            <button onclick="closeModal()">いいえ</button>
+        </div>
+    </div>
+    <script>
+        window.api.store('Get', 'error_format')
+        .then((res) => {
+            if(res) {
+                document.getElementById('message').innerHTML = '全半角文字、絵文字、記号のみ入力できます。';
+            }
+        })
+        const closeModal = () => {
+            window.api.send('close-modal')
+        }
+    </script>
+</body>
+
+</html>

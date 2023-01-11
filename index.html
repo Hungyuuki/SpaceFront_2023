@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+  <link href="./styles.css" rel="stylesheet">
+  <title>Hello World!</title>
+</head>
+
+<body>
+  <h1>Hello World!</h1>
+  We are using Node.js <span id="node-version"></span>,
+  Chromium <span id="chrome-version"></span>,
+  and Electron <span id="electron-version"></span>.
+  <div class="left button">
+    <img src="${user.userAvatar}">
+    <h4 class="button">${user.username}</h4>
+  </div>
+  <div class="right">
+    <div id='login-status-${user.userId}' class="status-users${user.login_status ? '-none' : ''}"
+      style="background-color: ${colorBackroundStatus}; border:transparent;">${loginStatus}</div>
+    <div class="mic button" id="mic-${user.userId}" onmouseover="changeCursorMicOfMe(${user.userId})"
+      onclick="changeStatusMic(${user.userId})">
+      <i class="fa-solid fa-microphone" style="display: ${micOn.style.display};" id="mic-on-${user.userId}"></i>
+      <i class="fa-solid fa-microphone-slash" id="mic-off-${user.userId}" style="display: ${micOff.style.display};"></i>
+    </div>
+    <div class="headphone button" id="speaker-${user.userId}" onmouseover="changeCursorSpeakerOfMe(${user.userId})"
+      onclick="changeStatusSpeaker(${user.userId})">
+      <i class="fa-solid fa-headphones" id="speaker-on-${user.userId}" style="display: ${speakerOn.style.display};"></i>
+      <img src="../static/earphone.png" class="fa-solid fa-earphones" id="speaker-off-${user.userId}"
+        style="display: ${speakerOff.style.display}; width: 20px; height: 20px;">
+    </div>
+  </div>
+
+  <!-- You can also require other files to run in this process -->
+  <script src="./outBuild/renderer.js"></script>
+</body>
+
+</html>

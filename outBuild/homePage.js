@@ -260,15 +260,14 @@ function createUsersHTMLInRoom(user) {
         user_status_icon = '';
     }
     return `
-                        <div class="user" id="user-${user.user_id}">
-                            <div class="left button">
-                              <img src="${user.user_avatar}">
+                              <div class="user" id="user-${user.user_id}">
+                              <div class="logo-user button">
+                                <img src="${user.user_avatar}">
+                              </div>
                               <div id='login-status-${user.user_id}' class="status-users${displayStatus}" style="background-color: ${colorBackroundStatus};">
                               <img src="${user_status_icon}">
                               </div>
                               <h4 class="button">${user.user_name}</h4>
-                            </div>
-                            <div class="right">
                               <div class="mic button" onclick="changeStatusMic(${user.user_id})">
                                 <i class="fa-solid fa-microphone" style="display: ${displayMicOn};" id="mic-on-${user.user_id}"></i>
                                 <i class="fa-solid fa-microphone-slash" id="mic-off-${user.user_id}" style="display: ${displayMicOff};"></i>
@@ -278,7 +277,7 @@ function createUsersHTMLInRoom(user) {
                                 <img src="../static/earphone.png"  class="fa-solid fa-earphones" id="speaker-off-${user.user_id}" style="display: ${displaySpeakerOff}; width: 20px; height: 20px; opacity: 0.3" >
                               </div>
                             </div>
-                        </div>
+                        
                                           `;
 }
 const convertUnicodeToString = (unicode) => {
@@ -512,13 +511,12 @@ function onJoinRoomEvent(user) {
         }
     }
     let text = `
-            <div class="left button">
-              <img src="${user.userAvatar}">
-              <div id='login-status-${user.userId}' class="status-users${displayStatus}" style="background-color: ${colorBackroundStatus};">
-              <img src="${specialStatusIcon[user.login_status]}"></div>
-              <h4 class="button">${user.username}</h4>
-            </div>
-            <div class="right">
+  <div class="logo-user button">
+  <img src="${user.userAvatar}">
+  </div>
+  <div id='login-status-${user.userId}' class="status-users${displayStatus}" style="background-color: ${colorBackroundStatus};">
+  <img src="${specialStatusIcon[user.login_status]}"></div>
+  <h4 class="button">${user.username}</h4>
               <div class="mic button" id="mic-${user.userId}" onmouseover="changeCursorMicOfMe(${user.userId})"
                 onclick="changeStatusMic(${user.userId})">
                 <i class="fa-solid fa-microphone" style="display: ${displayMicOn};" id="mic-on-${user.userId}"></i>
@@ -572,13 +570,11 @@ const renderUserHTML = (user) => {
     }
     const colorBackroundStatus = (_b = colorStatus[user.login_status]) !== null && _b !== void 0 ? _b : '';
     return `
-    <div class="left button">
-      <img src="${user.userAvatar}">
-      <div id='login-status-${user.userId}' class="status-users${(user.login_status && user.statusIcon) ? '-none' : ''}" style="background-color: ${colorBackroundStatus};">
-      <img src="${specialStatusIcon[user.login_status]}"></div>
-      <h4 class="button">${user.username}</h4>
-    </div>
-    <div class="right">
+  <div class="logo-user button">
+  <img src="${user.userAvatar}"></div>
+  <div id='login-status-${user.userId}' class="status-users${(user.login_status && user.statusIcon) ? '-none' : ''}" style="background-color: ${colorBackroundStatus};">
+  <img src="${specialStatusIcon[user.login_status]}"></div>
+  <h4 class="button">${user.username}</h4>
       <div class="mic button" id="mic-${user.userId}" onmouseover="changeCursorMicOfMe(${user.userId})"
         onclick="changeStatusMic(${user.userId})">
         <i class="fa-solid fa-microphone" style="display: ${micOn.style.display};" id="mic-on-${user.userId}"></i>
@@ -622,7 +618,7 @@ function onLeaveRoomEvent(user) {
     }
 }
 function onChangeAvatarEvent(user) {
-    const avatarElement = document.querySelector(`#user-${user.userId} .left img`);
+    const avatarElement = document.querySelector(`#user-${user.userId} .logo-user img`);
     if (avatarElement != null) {
         avatarElement.setAttribute('src', user.userAvatar);
     }
@@ -1115,7 +1111,7 @@ const renderMembersHTML = (members) => {
 const renderMemberHTML = (member) => {
     var _a;
     return `
-        <div class="user" style="width: 280px;">
+        <div class="user" style="width: 300px;">
           <div class="logo"><img src="${(_a = member.avatar) !== null && _a !== void 0 ? _a : '../static/defaultImage.png'}"></div>
           <div>
             <img src="../static/crown.png" style="margin-left: -9px; display: ${member.role == 'admin' ? 'block' : 'none'};  width="10px" height="10px">

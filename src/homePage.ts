@@ -253,10 +253,10 @@ function createUsersHTMLInRoom(user: any) {
     }
   }
 
-  if (!user_login_status) {
-    displayStatus = '-none'
-    user_login_status = ''
-  }
+if (!user_login_status) {  
+  displayStatus = '-none';
+  user_login_status = '';
+}
   if (!user_status_icon){
     displayStatus = '-none';
     user_status_icon = '';
@@ -497,10 +497,10 @@ function onJoinRoomEvent(user: any) {
   }
 
 // let loginStatus = statusUser[user.login_status] ?? '';
-  let loginStatus = specialStatusIcon[user.login_status] ?? '';
-  if (user.login_status == CUSTOM_STATUS) {
-    loginStatus = user.custom_status
-  }
+let loginStatus = specialStatusIcon[user.login_status] ?? '';
+if (user.login_status == CUSTOM_STATUS) {
+  loginStatus = user.custom_status
+}
   const colorBackroundStatus = colorStatus[user.login_status] ?? '';
   let displayStatus = ''
   let displayMicOn = "none";
@@ -805,7 +805,7 @@ const onChangeStatusEvent = (user: any) => {
     else {
       loginStatus.src = specialStatusIcon[user.status];
     }
-    loginStatus.style.backgroundColor = colorStatus[user.status];
+    statusBackground.style.backgroundColor = colorStatus[user.status];
   }
   if (localStorage.getItem('userId') == user.userId) {
     if (user.status === SPECIAL_STATUS) {
@@ -920,15 +920,15 @@ function appendNewFloor(floor_id: any, old_floor_id: any, name: any) {
   newFloorElement.style.backgroundColor = '#7f7f7f';
   newFloorElement.style.zIndex = '1000';
   const numberChilds = document.getElementById('floors')?.children.length;
-  const addFloor = document.querySelector('.floor.add-new') as HTMLElement;
-  let position = 0;
-  if (numberChilds != null && addFloor != null) {
-    position = ((numberChilds == 1 ? 0 : numberChilds - 1) * 60);
-    newFloorElement.style.top = `${position}px`;
-    addFloor.style.top = `${position + 60}px`;
-  }
+  // const addFloor = document.querySelector('.floor.add-new') as HTMLElement;
+  // let position = 0;
+  // if (numberChilds != null && addFloor != null) {
+  //   position = ((numberChilds == 1 ? 0 : numberChilds - 1) * 60);
+  //   newFloorElement.style.top = `${position}px`;
+  //   addFloor.style.top = `${position + 60}px`;
+  // }
   newFloorElement.innerHTML = `
-                <button onclick ="showConfirmModelFloor(event, ${floor_id}, ${position})" class="remove-floor" > x </button>
+                <button onclick ="showConfirmModelFloor(event, ${floor_id})" class="remove-floor" > x </button>
                 <p class = 'floor-name'>${name}</p>
                 `
   if (numberChilds > 2) {

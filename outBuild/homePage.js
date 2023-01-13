@@ -511,12 +511,12 @@ function onJoinRoomEvent(user) {
         }
     }
     let text = `
-  <div class="logo-user button">
-  <img src="${user.userAvatar}">
-  </div>
-  <div id='login-status-${user.userId}' class="status-users${displayStatus}" style="background-color: ${colorBackroundStatus};">
-  <img src="${specialStatusIcon[user.login_status]}"></div>
-  <h4 class="button">${user.username}</h4>
+              <div class="logo-user button">
+              <img src="${user.userAvatar}">
+              </div>
+              <div id='login-status-${user.userId}' class="status-users${displayStatus}" style="background-color: ${colorBackroundStatus};">
+              <img src="${specialStatusIcon[user.login_status]}"></div>
+              <h4 class="button">${user.username}</h4>
               <div class="mic button" id="mic-${user.userId}" onmouseover="changeCursorMicOfMe(${user.userId})"
                 onclick="changeStatusMic(${user.userId})">
                 <i class="fa-solid fa-microphone" style="display: ${displayMicOn};" id="mic-on-${user.userId}"></i>
@@ -789,7 +789,7 @@ const onChangeStatusEvent = (user) => {
         else {
             loginStatus.src = specialStatusIcon[user.status];
         }
-        loginStatus.style.backgroundColor = colorStatus[user.status];
+        statusBackground.style.backgroundColor = colorStatus[user.status];
     }
     if (localStorage.getItem('userId') == user.userId) {
         if (user.status === SPECIAL_STATUS) {
@@ -902,15 +902,15 @@ function appendNewFloor(floor_id, old_floor_id, name) {
     newFloorElement.style.backgroundColor = '#7f7f7f';
     newFloorElement.style.zIndex = '1000';
     const numberChilds = (_a = document.getElementById('floors')) === null || _a === void 0 ? void 0 : _a.children.length;
-    const addFloor = document.querySelector('.floor.add-new');
-    let position = 0;
-    if (numberChilds != null && addFloor != null) {
-        position = ((numberChilds == 1 ? 0 : numberChilds - 1) * 60);
-        newFloorElement.style.top = `${position}px`;
-        addFloor.style.top = `${position + 60}px`;
-    }
+    // const addFloor = document.querySelector('.floor.add-new') as HTMLElement;
+    // let position = 0;
+    // if (numberChilds != null && addFloor != null) {
+    //   position = ((numberChilds == 1 ? 0 : numberChilds - 1) * 60);
+    //   newFloorElement.style.top = `${position}px`;
+    //   addFloor.style.top = `${position + 60}px`;
+    // }
     newFloorElement.innerHTML = `
-                <button onclick ="showConfirmModelFloor(event, ${floor_id}, ${position})" class="remove-floor" > x </button>
+                <button onclick ="showConfirmModelFloor(event, ${floor_id})" class="remove-floor" > x </button>
                 <p class = 'floor-name'>${name}</p>
                 `;
     if (numberChilds > 2) {

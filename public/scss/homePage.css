@@ -187,7 +187,7 @@ body {
   cursor: pointer;
   stroke: rgb(238,238,238);
   position: absolute;
-  left: 260px;
+  left: 245px;
 }
 .floors .add-new svg{
   height: 30px;
@@ -524,8 +524,8 @@ width: 115px;
 }
 
 .footer .pin-button{
-  opacity: 0.3;
-  scale: 0.4;
+  opacity: 0.25;
+  scale: 0.35;
   position: absolute;
   right: 40px;
 }
@@ -755,14 +755,14 @@ button {
 
 .exitbutton{
   position: absolute;
-  right: 25px;  
-  bottom: 45px;
+  right: 5px;  
+  bottom: 25px;
   color: rgb(193,195,205);
 }
-.exitbutton i{
+/* .exitbutton i{
   position: absolute;
   color: rgb(193,195,205);
-}
+} */
 
 .logo #currentAvatar {
   background-color: grey;

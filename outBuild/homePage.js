@@ -39,7 +39,8 @@ const specialStatusIcon = [
     "../static/rush.png",
     "../static/viber.png",
     "../static/logout.png",
-    "../static/briefcase.png"
+    "../static/briefcase.png",
+    "../static/F3F3F3.png"
 ];
 const CUSTOM_STATUS = 7;
 const SPECIAL_STATUS = 6;
@@ -264,8 +265,8 @@ function createUsersHTMLInRoom(user) {
                               <div class="logo-user button">
                                 <img src="${user.user_avatar}">
                               </div>
-                              <div id='login-status-${user.user_id}' class="status-users${displayStatus}" style="background-color: ${colorBackroundStatus};">
-                              <img src="${user_status_icon}">
+                              <div id='login-status-${user.user_id}' class="status-users${displayStatus}" style="background-color: ${colorBackroundStatus}; border: 3px solid white;">
+                              <img style="border-radius: 50%; scale: 0.9; border: 3px solid white;" src="${user_status_icon}">
                               </div>
                               <h4 class="button">${user.user_name}</h4>
                               <div class="mic button" onclick="changeStatusMic(${user.user_id})">
@@ -418,7 +419,7 @@ const createRoomButton = () => {
     createRoomButton.innerHTML = `<button onclick="openRoomCreate()" style="font-size: 12px; margin: 0px; width: 88px; height: 40px;">ルームの追加</button>`;
     return createRoomButton;
 };
-//Nút status dưới
+//Xư lý nút status dưới
 const loadStatusUser = (user) => {
     localStorage.setItem('status_login', user.login_status);
     const status = document.getElementById('status');
@@ -514,8 +515,8 @@ function onJoinRoomEvent(user) {
               <div class="logo-user button">
               <img src="${user.userAvatar}">
               </div>
-              <div id='login-status-${user.userId}' class="status-users${displayStatus}" style="background-color: ${colorBackroundStatus};">
-              <img src="${specialStatusIcon[user.login_status]}"></div>
+              <div id='login-status-${user.userId}' class="status-users${displayStatus}" style="background-color: ${colorBackroundStatus}; border: 3px solid white;">
+              <img style="border-radius: 50%; scale: 0.9;" src="${specialStatusIcon[user.login_status]}"></div>
               <h4 class="button">${user.username}</h4>
               <div class="mic button" id="mic-${user.userId}" onmouseover="changeCursorMicOfMe(${user.userId})"
                 onclick="changeStatusMic(${user.userId})">
@@ -564,7 +565,7 @@ const appendUserElement = (user) => __awaiter(this, void 0, void 0, function* ()
 });
 const renderUserHTML = (user) => {
     var _a, _b;
-    let loginStatus = (_a = statusUser[user.login_status]) !== null && _a !== void 0 ? _a : '';
+    let loginStatus = (_a = statusUser[user.user_login_status]) !== null && _a !== void 0 ? _a : '';
     if (user.login_status == CUSTOM_STATUS) {
         loginStatus = user.custom_status;
     }
@@ -572,8 +573,8 @@ const renderUserHTML = (user) => {
     return `
   <div class="logo-user button">
   <img src="${user.userAvatar}"></div>
-  <div id='login-status-${user.userId}' class="status-users${(user.login_status && user.statusIcon) ? '-none' : ''}" style="background-color: ${colorBackroundStatus};">
-  <img src="${specialStatusIcon[user.login_status]}"></div>
+  <div id='login-status-${user.userId}' class="status-users${(user.login_status && user.statusIcon) ? '-none' : ''}" style="background-color: ${colorBackroundStatus}; border: 3px solid white;">
+  <img style="border-radius: 50%; scale: 0.9;" src="${specialStatusIcon[user.login_status]}"></div>
   <h4 class="button">${user.username}</h4>
       <div class="mic button" id="mic-${user.userId}" onmouseover="changeCursorMicOfMe(${user.userId})"
         onclick="changeStatusMic(${user.userId})">

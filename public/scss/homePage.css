@@ -340,7 +340,7 @@ ul {
 } */
 
 .status-users {
-  border: 1px solid #d9d9d9;
+  border: 3px solid white;
   width: 30px;
   height: 30px;
   font-size: 10px;
@@ -353,12 +353,12 @@ ul {
   position: relative;
   right: 15px;
   bottom: 15px;
-  border: 3px solid #fff;
+  /* border: 3px solid #fff; */
   scale: 0.9;
 }
 
 .status-users-none {
-  border: 1px solid #d9d9d9;
+  border: 3px solid white;
   width: 30px;
   height: 30px;
   font-size: 10px;
@@ -371,7 +371,7 @@ ul {
   position: relative;
   right: 15px;
   bottom: 15px;
-  border: 3px solid #fff;
+  /* border: 3px solid #fff; */
   scale: 0.9;
 }
 
